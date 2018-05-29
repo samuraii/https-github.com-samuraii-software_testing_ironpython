@@ -41,4 +41,14 @@ file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', f_name)
 excel = Excel.ApplicationClass()
 excel.visible = True
 
+workbook = excel.Workbooks.Add()
+sheet = workbook.ActiveSheet
+
+for i in range(len(testdata)):
+    sheet.Range[("A%s" % (i + 1))].Value2 = testdata[i].name
+
+workbook.SaveAs(file)
+
+excel.Quit()
+
 time.sleep(10)
